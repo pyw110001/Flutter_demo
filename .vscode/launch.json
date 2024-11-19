@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "flutter_curosr_unsplash",
+            "cwd": "flutter_curosr_unsplash",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "flutter_curosr_unsplash (profile mode)",
+            "cwd": "flutter_curosr_unsplash",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "flutter_curosr_unsplash (release mode)",
+            "cwd": "flutter_curosr_unsplash",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
