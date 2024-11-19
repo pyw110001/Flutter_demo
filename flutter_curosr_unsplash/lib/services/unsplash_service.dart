@@ -49,6 +49,7 @@ class UnsplashService {
           ? '$_baseUrl/topics/$topic/photos'
           : '$_baseUrl/photos';
 
+      print('开始获取图片列表: 第$page页, 每页$perPage张');
       final response = await _dio.get(
         endpoint,
         queryParameters: {
@@ -60,12 +61,17 @@ class UnsplashService {
         },
       );
 
-      return (response.data as List).map((photo) => {
+      final photos = (response.data as List).map((photo) => {
         'id': photo['id'],
         'url': photo['urls']['small'],
+        'full_url': photo['urls']['full'],
+        'raw_url': photo['urls']['raw'],
         'author': photo['user']['name'],
         'description': photo['description'] ?? '无描述',
       }).toList();
+
+      print('成功获取${photos.length}张图片');
+      return photos;
     } catch (e) {
       print('获取图片列表失败: $e');
       throw Exception('获取图片列表失败: $e');

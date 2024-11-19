@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../services/unsplash_service.dart';
+import 'photo_detail_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -140,16 +141,26 @@ class _HomePageState extends State<HomePage> {
                 }
                 
                 final photo = _photos[index];
-                return CachedNetworkImage(
-                  imageUrl: photo['url'],
-                  fit: BoxFit.cover,
-                  placeholder: (context, url) => Container(
-                    color: Colors.grey[300],
-                    child: const Center(
-                      child: CircularProgressIndicator(),
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PhotoDetailPage(photo: photo),
+                      ),
+                    );
+                  },
+                  child: CachedNetworkImage(
+                    imageUrl: photo['url'],
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) => Container(
+                      color: Colors.grey[300],
+                      child: const Center(
+                        child: CircularProgressIndicator(),
+                      ),
                     ),
+                    errorWidget: (context, url, error) => const Icon(Icons.error),
                   ),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
                 );
               },
             ),
